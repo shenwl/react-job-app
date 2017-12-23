@@ -18,7 +18,7 @@ Router.get('/list', (req, res) => {
 
 Router.post('/login', (req, res) => {
     const {user, pwd} = req.body
-    User.findOne({user, pwd: md5Pwd(pwd)}, (err,doc) => {
+    User.findOne({user, pwd: md5Pwd(pwd)}, {'pwd': 0}, (err,doc) => {
         if(!doc) {
             return res.json({code: 1, msg: '用户名或密码错误'})
         }
