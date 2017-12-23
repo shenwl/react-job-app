@@ -4,6 +4,12 @@ const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
 
+//md5
+function md5Pwd(pwd) {
+    const salt = 'dsada~~j_14~21_vklfdmo_94839_asd'
+    return utils.md5(utils.md5(pwd+salt))
+}
+
 Router.get('/list', (req, res) => {
     User.find({}, (err, doc) => {
         return res.json(doc)
@@ -16,7 +22,7 @@ Router.post('/register', (req, res) => {
         if(doc) {
             return res.json({code: 1, msg: '用户名已存在'})
         }
-        User.create({user, pwd: utils.md5(pwd), type}, (err, doc) => {
+        User.create({user, pwd: md5Pwd(pwd), type}, (err, doc) => {
             if(err) {
                 return res.json({code: 1, msg: '数据库出错了'})
             }
@@ -28,5 +34,6 @@ Router.post('/register', (req, res) => {
 Router.get('/info', (req, res) => {
     return res.json({code: 1})
 })
+
 
 module.exports = Router
