@@ -37,6 +37,7 @@ class Register extends React.Component {
                 <Logo></Logo>
                 <WingBlank>
                     <List>
+                        {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
                         <InputItem 
                             onChange={v=>this.changeHandler('user', v)}
                             placeholder='用户名'></InputItem>
