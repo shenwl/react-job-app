@@ -31,15 +31,14 @@ class Login extends React.Component {
     }
 
     register() {
-        console.log(this.props)
         this.props.history.push('/register')  
     }
     render() {
         return (
             <div>
-                {this.props.redirectTo ? <Redirect to={this.props.redirectTo}></Redirect> : null}
                 <Logo></Logo>
                 <WingBlank>
+                    {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
                     <List>
                         <InputItem 
                             onChange={v=>this.changeHandler('user', v)}
@@ -51,9 +50,7 @@ class Login extends React.Component {
                     </List>
                     <WhiteSpace />
                     <WhiteSpace />
-                    <Button 
-                        onClick={this.loginHandler()}
-                        type='primary'>登录</Button>
+                    <Button onClick={this.loginHandler} type='primary'>登录</Button>
                     <WhiteSpace />
                     <Button onClick={this.register} type='primary'>注册</Button>
                 </WingBlank>
