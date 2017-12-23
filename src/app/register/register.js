@@ -6,12 +6,21 @@ class Register extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            user: '',
+            pwd: '',
+            repeatPwd: '',
             type: 'genius'  //or boss
         }
     }
 
-    register() {
-      this.props.history.push('/register')  
+    changeHandler(key, value) {
+        this.setState({
+            [key]: value
+        })
+    }
+
+    registerHandler() {
+        console.log(this.state)
     }
 
     render() {
@@ -21,23 +30,35 @@ class Register extends React.Component {
                 <Logo></Logo>
                 <WingBlank>
                     <List>
-                        <InputItem placeholder='请输入用户名'></InputItem>
+                        <InputItem 
+                            onChange={v=>this.changeHandler('user', v)}
+                            placeholder='请输入用户名'></InputItem>
                         <WhiteSpace />
-                        <InputItem placeholder='请输入密码'></InputItem>
+                        <InputItem
+                            type='password'
+                            onChange={v=>this.changeHandler('pwd', v)}
+                            placeholder='请输入密码'></InputItem>
                         <WhiteSpace />
-                        <InputItem placeholder='请确认密码'></InputItem>
+                        <InputItem 
+                            type='password'
+                            onChange={v=>this.changeHandler('repeatPwd', v)}
+                            placeholder='请确认密码'></InputItem>
                         <WhiteSpace />
                         <WhiteSpace />
-                        <RadioItem checked={this.state.type==='genius'}>
+                        <RadioItem 
+                            checked={this.state.type==='genius'}
+                            onChange={() => this.changeHandler('type', 'genius')}>
                             求职者
                         </RadioItem>
-                        <RadioItem checked={this.state.type==='boss'}>
+                        <RadioItem 
+                            checked={this.state.type==='boss'}
+                            onChange={() => this.changeHandler('type', 'boss')}>
                             BOSS
                         </RadioItem>
                     </List>
                     <WhiteSpace />
                     <WhiteSpace />
-                    <Button type='primary'>注册</Button>
+                    <Button type='primary' onClick={() => this.registerHandler()}>注册</Button>
                 </WingBlank>
             </div>
         )
