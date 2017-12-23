@@ -1,7 +1,13 @@
 import React from 'react'
 import Logo from '../../component/logo/logo'
 import { List, InputItem, WingBlank, WhiteSpace, Button, Radio } from 'antd-mobile'
+import { connect } from 'react-redux'
+import { register } from '../../redux/user.redux'
 
+@connect(
+    state => state.user,
+    {register}
+)
 class Register extends React.Component {
     constructor(props) {
         super(props)
@@ -20,6 +26,7 @@ class Register extends React.Component {
     }
 
     registerHandler() {
+        this.props.register(this.state)
         console.log(this.state)
     }
 
@@ -32,17 +39,17 @@ class Register extends React.Component {
                     <List>
                         <InputItem 
                             onChange={v=>this.changeHandler('user', v)}
-                            placeholder='请输入用户名'></InputItem>
+                            placeholder='用户名'></InputItem>
                         <WhiteSpace />
                         <InputItem
                             type='password'
                             onChange={v=>this.changeHandler('pwd', v)}
-                            placeholder='请输入密码'></InputItem>
+                            placeholder='密码'></InputItem>
                         <WhiteSpace />
                         <InputItem 
                             type='password'
                             onChange={v=>this.changeHandler('repeatPwd', v)}
-                            placeholder='请确认密码'></InputItem>
+                            placeholder='确认密码'></InputItem>
                         <WhiteSpace />
                         <WhiteSpace />
                         <RadioItem 
