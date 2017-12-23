@@ -16,13 +16,14 @@ class Login extends React.Component {
         return (
             <div>
                 <Logo></Logo>
-                <h2>登陆页面</h2>
                 <WingBlank>
                     <List>
-                        <InputItem>用户:</InputItem>
+                        <InputItem placeholder='请输入用户名'></InputItem>
                         <WhiteSpace />
-                        <InputItem>密码:</InputItem>
+                        <InputItem placeholder='请输入密码'></InputItem>
                     </List>
+                    <WhiteSpace />
+                    <WhiteSpace />
                     <Button type='primary'>登陆</Button>
                     <WhiteSpace />
                     <Button onClick={this.register} type='primary'>注册</Button>
