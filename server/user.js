@@ -15,7 +15,17 @@ Router.get('/list', (req, res) => {
         return res.json(doc)
     })
 })
-//login
+
+Router.post('/login', (req, res) => {
+    const {user, pwd} = req.body
+    User.findOne({user, pwd: md5Pwd(pwd)}, (err,doc) => {
+        if(!doc) {
+            return res.json({code: 1, msg: '用户名或密码错误'})
+        }
+        return res.json({code: 0, data: doc})
+    })
+})
+
 Router.post('/register', (req, res) => {
     const {user, pwd, type} = req.body
     User.findOne({user:user}, (err, doc) => {
