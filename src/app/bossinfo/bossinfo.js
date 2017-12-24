@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, InputItem, WingBlank, WhiteSpace, Button, NavBar, TextareaItem } from 'antd-mobile'
+import { InputItem, WhiteSpace, Button, NavBar, TextareaItem, WingBlank } from 'antd-mobile'
 import AvatarSelector from '../../component/avatarSelector/avatarSelector'
 
 class BossInfo extends React.Component {
@@ -45,6 +45,9 @@ class BossInfo extends React.Component {
                     autoHeight='true'
                     title='职位要求'>
                 </TextareaItem>
+                <WingBlank>
+                    <Button type='primary'>保存</Button>
+                </WingBlank>
             </div>
             
         )
