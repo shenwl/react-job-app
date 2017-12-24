@@ -46,6 +46,7 @@ class Login extends React.Component {
                             placeholder='请输入用户名'></InputItem>
                         <WhiteSpace />
                         <InputItem
+                            type='password'
                             onChange={v=>this.changeHandler('pwd', v)}
                             placeholder='请输入密码'></InputItem>
                     </List>
