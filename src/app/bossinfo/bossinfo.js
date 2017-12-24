@@ -6,6 +6,7 @@ class BossInfo extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            avatar: '',
             title: '',
             company: '',
             money: '',
@@ -21,7 +22,13 @@ class BossInfo extends React.Component {
         return (
             <div>
                 <NavBar mode="dark">BOSS完善信息页</NavBar>
-                <AvatarSelector></AvatarSelector>
+                <AvatarSelector
+                    selectAvatar={(imgName) => {
+                        this.setState({
+                            avatar: imgName
+                        })
+                    }}
+                ></AvatarSelector>
                 <WhiteSpace />
                 <InputItem onChange={(v) => this.onChangeHandler('title', v)}>
                     招聘职位
