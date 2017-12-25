@@ -15,7 +15,7 @@ const initState = {
 export function user(state=initState, action) {
     switch(action.type) {
         case AUTH_SUCCESS:
-            return {...state, msg: '', redirectTo: getRedirectPath(action.payload), ...action.payload}
+            return {...state, msg: '', redirectTo: getRedirectPath(action.payload), ...action.payload, pwd: ''}
         case LOAD_DATA:
             return {...state, ...action.payload}
         case ERROR_MSG:
@@ -25,7 +25,9 @@ export function user(state=initState, action) {
     }
 }
 
-function authSuccess(data) {
+function authSuccess(obj) {
+    //过滤pwd
+    const {pwd, ...data} = obj
     return {type: AUTH_SUCCESS, payload: data}
 }
 
