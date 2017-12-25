@@ -3,12 +3,12 @@ import { getRedirectPath } from '../util'
 
 const ERROR_MSG = 'ERROR_MSG'
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
+const LOAD_DATA = 'LOAD_DATA'
 
 const initState = {
     redirectTo: '',
     msg: '',
     user: '',
-    pwd: '',
     type: ''
 }
 //reducer
@@ -16,6 +16,8 @@ export function user(state=initState, action) {
     switch(action.type) {
         case AUTH_SUCCESS:
             return {...state, msg: '', redirectTo: getRedirectPath(action.payload), ...action.payload}
+        case LOAD_DATA:
+            return {...state, ...action.payload}
         case ERROR_MSG:
             return {...state, isAuth: false, msg: action.msg}
         default:
@@ -29,6 +31,16 @@ function authSuccess(data) {
 
 function errorMsg(msg) {
     return { msg, type:ERROR_MSG }
+}
+
+export function loadData(userinfo) {
+    return {type: LOAD_DATA, payload: userinfo}
+
+    
+    //是否登录
+    //当前url，login url不需要跳转
+    //用户type（身份）
+    //用户是否完善信息（选择头像，个人简介）
 }
 
 export function update(data) {
