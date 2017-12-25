@@ -1,7 +1,13 @@
 import React from 'react'
 import { InputItem, WhiteSpace, Button, NavBar, TextareaItem, WingBlank } from 'antd-mobile'
 import AvatarSelector from '../../component/avatarSelector/avatarSelector'
+import { connect } from 'react-redux'
+import { update } from '../../redux/user.redux'
 
+@connect(
+    state => state.user,
+    {update}
+)
 class BossInfo extends React.Component {
     constructor(props) {
         super(props)
@@ -46,7 +52,11 @@ class BossInfo extends React.Component {
                     title='职位要求'>
                 </TextareaItem>
                 <WingBlank>
-                    <Button type='primary'>保存</Button>
+                    <Button
+                        onClick={() => {
+                            this.props.update(this.state)
+                        }}
+                        type='primary'>保存</Button>
                 </WingBlank>
             </div>
             
