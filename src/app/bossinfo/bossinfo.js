@@ -3,6 +3,7 @@ import { InputItem, WhiteSpace, Button, NavBar, TextareaItem, WingBlank } from '
 import AvatarSelector from '../../component/avatarSelector/avatarSelector'
 import { connect } from 'react-redux'
 import { update } from '../../redux/user.redux'
+import { Redirect } from 'react-router-dom'
 
 @connect(
     state => state.user,
@@ -25,8 +26,11 @@ class BossInfo extends React.Component {
         })
     }
     render() {
+        const path = this.props.location.pathname
+        const redirect = this.props.redirectTo
         return (
             <div>
+                { redirect && redirect !== path ? <Redirect to={redirect}></Redirect> : null}
                 <NavBar mode="dark">BOSS完善信息页</NavBar>
                 <AvatarSelector
                     selectAvatar={(imgName) => {
