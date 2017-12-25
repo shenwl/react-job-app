@@ -16,6 +16,10 @@ Router.get('/list', (req, res) => {
     })
 })
 
+Router.get('/update', (req, res) => {
+    return res.json({code: 1})
+})
+
 Router.post('/login', (req, res) => {
     const {user, pwd} = req.body
     User.findOne({user, pwd: md5Pwd(pwd)}, {'pwd': 0}, (err,doc) => {
@@ -44,6 +48,5 @@ Router.post('/register', (req, res) => {
 Router.get('/info', (req, res) => {
     return res.json({code: 1})
 })
-
 
 module.exports = Router
