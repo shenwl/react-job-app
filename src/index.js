@@ -9,6 +9,7 @@ import reducers from './reducer'
 import Login from './app/login/login'
 import Register from './app/register/register'
 import AuthRoute from './component/authRoute/authRoute'
+import Dashboard from './component/dashboard/dashboard'
 import BossInfo from './app/bossinfo/bossinfo'
 import GeniusInfo from './app/geniusinfo/geniusinfo'
 import './config'
@@ -21,6 +22,8 @@ const store = createStore(reducers, compose(
 function Boss() {
     return <h1>BOSS页面</h1>
 }
+
+// boss genius me msg 4page
 ReactDom.render(
     (<Provider store={store}>
         <BrowserRouter>
@@ -31,6 +34,7 @@ ReactDom.render(
                     <Route path='/geniusinfo' component={GeniusInfo}></Route>
                     <Route path='/login' component={Login}></Route>
                     <Route path='/register' component={Register}></Route>
+                    <Route component={Dashboard}></Route>
                 </Switch>
             </div>
         </BrowserRouter>
