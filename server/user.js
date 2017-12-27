@@ -12,8 +12,10 @@ function md5Pwd(pwd) {
 }
 
 Router.get('/list', (req, res) => {
-    User.find({}, (err, doc) => {
-        return res.json(doc)
+    const {type} = req.query
+    // User.remove({}, (err, doc) => {})
+    User.find({type}, (err, doc) => {
+        return res.json({code: 0, data: doc})
     })
 })
 

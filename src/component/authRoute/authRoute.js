@@ -25,7 +25,6 @@ class AuthRoute extends React.Component {
                     }else {
                         this.props.history.push('/login')
                     }
-                    console.log(res.data)
                 }
             })
         //是否登录
