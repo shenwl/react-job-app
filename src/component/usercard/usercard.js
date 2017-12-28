@@ -6,7 +6,7 @@ class UserCard extends React.Component {
     static propTypes = {
         userlist: PropTypes.array.isRequired
     }
-    
+
     render() {
         const Header = Card.Header
         const Body = Card.Body
@@ -22,9 +22,11 @@ class UserCard extends React.Component {
                             extra={<span>{v.title}</span>}>
                         </Header>
                         <Body>
-                            {v.desc.split('\n').map(v => (
-                                <p key={v}>{v}</p>
+                            {v.type==='boss'?<div>公司：{v.company}</div>:null}
+                            {v.desc.split('\n').map(val => (
+                                <p key={val}>{val}</p>
                             ))}
+                            {v.type==='boss'?<div>薪资：{v.money}</div>:null}
                         </Body>
                     </Card>
                     : null
