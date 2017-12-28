@@ -5,12 +5,10 @@ import { connect } from 'react-redux'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../boss/boss'
 import Genius from '../genius/genius'
+import User from '../user/user'
 
 function Msg() {
 	return <h2>Msg index</h2>
-}
-function User() {
-	return <h2>user index</h2>
 }
 
 @connect(
