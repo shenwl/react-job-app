@@ -7,7 +7,7 @@ import UserCard from '../usercard/usercard'
     state => state.chatuser,
     {getUserList}
 )
-class Boss extends React.Component {
+class Genius extends React.Component {
     componentDidMount() {
        this.props.getUserList('genius')
     }
@@ -16,4 +16,4 @@ class Boss extends React.Component {
     }
 }
 
-export default Boss
+export default Genius

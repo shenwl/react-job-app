@@ -4,10 +4,8 @@ import { NavBar, Icon, TabBar } from 'antd-mobile'
 import { connect } from 'react-redux'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../boss/boss'
+import Genius from '../genius/genius'
 
-function Genius() {
-	return <h2>genius index</h2>
-}
 function Msg() {
 	return <h2>Msg index</h2>
 }
