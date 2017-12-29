@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { NavBar, Icon, TabBar } from 'antd-mobile'
+import { NavBar } from 'antd-mobile'
 import { connect } from 'react-redux'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../boss/boss'
@@ -62,7 +62,6 @@ class Dashboard extends React.Component {
 						</Switch>
 					</div>
 				<NavLinkBar data={navList}></NavLinkBar>
-
 			</div>
 		)
 	}

@@ -1,11 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Result, WhiteSpace, List, Button } from 'antd-mobile'
+import browserCookie from 'browser-cookies'
 
 @connect(
     state => state.user
 )
 class User extends React.Component {
+    constructor(props) {
+        super(props)
+        this.logout = this.logout.bind(this)
+    }
+
+    logout() {
+        console.log('logout')
+    }
+    
     render() {
         const props = this.props
         const Item = List.Item
@@ -28,9 +38,7 @@ class User extends React.Component {
                     </Item>
                 </List>
                 <WhiteSpace/>
-                <List>
-                    <Item>注销</Item>
-                </List>
+                <Button onClick={this.logout}>注销</Button>
             </div>
         ):null
     }

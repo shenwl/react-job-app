@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import reducers from './reducer'
 import Login from './app/login/login'
@@ -19,9 +19,6 @@ const store = createStore(reducers, compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
-function Boss() {
-    return <h1>BOSS页面</h1>
-}
 
 // boss genius me msg 4page
 ReactDom.render(
