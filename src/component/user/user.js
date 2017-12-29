@@ -22,6 +22,7 @@ class User extends React.Component {
             { text: '确认', onPress: () => {
                 browserCookie.erase('userid')
                 this.props.logoutSubmit()
+                window.location.href = window.location.href
             } },
           ]);
     }
@@ -32,6 +33,7 @@ class User extends React.Component {
         const Brief = List.Item.Brief
         return props.user?(
             <div>
+                {/* {(props.redirectTo && props.redirectTo !== '/login')?<Redirect to={props.redirectTo}/>:null} */}
                 <Result
                     img={<img src={require(`../img/${props.avatar}.png`)} style={{width: 50}} alt="avatar"/>}
                     title={props.user}
@@ -48,7 +50,7 @@ class User extends React.Component {
                 <WhiteSpace/>
                 <Button onClick={this.logout}>注销</Button>
             </div>
-        ):<Redirect to={props.redirectTo}/>
+        ):null
     }
 }
 
