@@ -14,8 +14,10 @@ class UserCard extends React.Component {
             <WingBlank>
                 <WhiteSpace/>
                 {this.props.userlist.map(v => (
-                    v.avatar ? 
-                    <Card key={v._id}>
+                    v.avatar ? (
+                    <Card 
+                        onClick={() => this.clickHandler(v)}
+                        key={v._id}>
                         <Header
                             title={v.user}
                             thumb={require(`../img/${v.avatar}.png`)}
@@ -28,7 +30,7 @@ class UserCard extends React.Component {
                             ))}
                             {v.type==='boss'?<div>薪资：{v.money}</div>:null}
                         </Body>
-                    </Card>
+                    </Card>)
                     : null
                 ))}
             </WingBlank>
