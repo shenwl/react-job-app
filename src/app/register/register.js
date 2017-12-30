@@ -4,30 +4,25 @@ import { List, InputItem, WingBlank, WhiteSpace, Button, Radio } from 'antd-mobi
 import { connect } from 'react-redux'
 import { register } from '../../redux/user.redux'
 import { Redirect } from 'react-router-dom'
+import appForm from '../../component/appForm/appForm'
 
 @connect(
     state => state.user,
     {register}
 )
+@appForm
 class Register extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            user: '',
-            pwd: '',
-            repeatPwd: '',
-            type: 'genius'  //or boss
-        }
+
     }
 
-    changeHandler(key, value) {
-        this.setState({
-            [key]: value
-        })
+    componentDidMount() {
+        this.props.changeHandler('type', 'genius')
     }
 
     registerHandler() {
-        this.props.register(this.state)
+        this.props.register(this.props.state)
     }
 
     render() {
@@ -40,28 +35,28 @@ class Register extends React.Component {
                     <List>
                         {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
                         <InputItem 
-                            onChange={v=>this.changeHandler('user', v)}
+                            onChange={v=>this.props.changeHandler('user', v)}
                             placeholder='用户名'></InputItem>
                         <WhiteSpace />
                         <InputItem
                             type='password'
-                            onChange={v=>this.changeHandler('pwd', v)}
+                            onChange={v=>this.props.changeHandler('pwd', v)}
                             placeholder='密码'></InputItem>
                         <WhiteSpace />
                         <InputItem 
                             type='password'
-                            onChange={v=>this.changeHandler('repeatPwd', v)}
+                            onChange={v=>this.props.changeHandler('repeatPwd', v)}
                             placeholder='确认密码'></InputItem>
                         <WhiteSpace />
                         <WhiteSpace />
                         <RadioItem 
-                            checked={this.state.type==='genius'}
-                            onChange={() => this.changeHandler('type', 'genius')}>
+                            checked={this.props.state.type==='genius'}
+                            onChange={() => this.props.changeHandler('type', 'genius')}>
                             求职者
                         </RadioItem>
                         <RadioItem 
-                            checked={this.state.type==='boss'}
-                            onChange={() => this.changeHandler('type', 'boss')}>
+                            checked={this.props.state.type==='boss'}
+                            onChange={() => this.props.changeHandler('type', 'boss')}>
                             BOSS
                         </RadioItem>
                     </List>
