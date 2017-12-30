@@ -4,30 +4,22 @@ import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { login } from '../../redux/user.redux'
 import { Redirect } from 'react-router-dom'
+import appForm from '../../component/appForm/appForm'
 
 @connect(
     state => state.user,
     {login}
 )
+@appForm
 class Login extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            user: '',
-            pwd: ''
-        }
         this.register = this.register.bind(this)
         this.loginHandler = this.loginHandler.bind(this)
     }
 
-    changeHandler(key, value) {
-        this.setState({
-            [key]: value
-        })
-    }
-
     loginHandler() {
-        this.props.login(this.state)
+        this.props.login(this.props.state)
     }
 
     register() {
@@ -42,12 +34,12 @@ class Login extends React.Component {
                     {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
                     <List>
                         <InputItem 
-                            onChange={v=>this.changeHandler('user', v)}
+                            onChange={v=>this.props.changeHandler('user', v)}
                             placeholder='请输入用户名'></InputItem>
                         <WhiteSpace />
                         <InputItem
                             type='password'
-                            onChange={v=>this.changeHandler('pwd', v)}
+                            onChange={v=>this.props.changeHandler('pwd', v)}
                             placeholder='请输入密码'></InputItem>
                     </List>
                     <WhiteSpace />
