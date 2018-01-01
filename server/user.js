@@ -4,6 +4,7 @@ const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
 const _filter = {'pwd': 0, "__v": 0}
+const Chat = model.getModel('chat')
 
 //md5
 function md5Pwd(pwd) {
@@ -16,6 +17,15 @@ Router.get('/list', (req, res) => {
     // User.remove({}, (err, doc) => {})
     User.find({type}, (err, doc) => {
         return res.json({code: 0, data: doc})
+    })
+})
+
+Router.get('/getmsglist', (req, res) => {
+    const user = req.cookies.user
+    // 多个查询条件用'$or'
+    // '$or': [{from: user}, {to: user}]
+    Chat.find({}, (err, doc) => {
+        return res.json({code: 0, msgs: doc})
     })
 })
 
