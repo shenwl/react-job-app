@@ -7,6 +7,10 @@ class UserCard extends React.Component {
         userlist: PropTypes.array.isRequired
     }
 
+    clickHandler() {
+        this.props.history.push(`/chat/${v.user}`)
+    }
+
     render() {
         const Header = Card.Header
         const Body = Card.Body
