@@ -39,8 +39,8 @@ class Chat extends React.Component {
     render() {
         return (
             <div>
-                {this.state.msg.map(v => {
-                    return <p key={v}>{v}</p>
+                {this.props.chat.chatMsg.map(v => {
+                    return <p key={v._id}>{v.content}</p>
                 })}
                 <div className="stick-footer">
                     <List>
