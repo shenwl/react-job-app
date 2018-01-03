@@ -26,7 +26,11 @@ export function chat(state=initState, action) {
                 chatMsg: action.payload, 
                 unread: action.payload.filter(v => !v.read).length
             }
-        // case MSG_RECV:
+        case MSG_RECV:
+            return {
+                ...state,
+                chatMsg: [...state.chatMsg, action.payload]
+            }
         // case MSG_READ:
         default:
             return state
@@ -35,6 +39,24 @@ export function chat(state=initState, action) {
 
 function msgList(msgs) {
     return {type: 'MSG_LIST', payload: msgs}
+}
+
+function msgRecv(msg) {
+    return {type: MSG_RECV, payload: msg}
+}
+
+export function sendMsg({from, to, msg}) {
+    return dispatch => {
+        socket.emit('sendMsg', {from, to, msg})
+    }
+}
+
+export function receiveMsg() {
+    return dispatch => {
+        socket.on('receiveMsg', (data) => {
+            dispatch(msgRecv(data))
+        })
+    }
 }
 
 export function getMsgList() {
