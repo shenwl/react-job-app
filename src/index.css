@@ -20,9 +20,18 @@
     padding: 45px 5px;
 }
 
-.am-list {
+#chat-page {
     margin-top: 45px;
 }
+
+.am-list {
+    margin-bottom: 5px;
+}
+#chat-page .am-navbar {
+    position: fixed;
+    top: 0;
+}
+
 
 #chat-page .chat-me .am-list-extra {
     flex-basis: auto
