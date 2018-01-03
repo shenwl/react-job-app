@@ -2,9 +2,9 @@ const express = require('express')
 const utils = require('utility')
 const Router = express.Router()
 const model = require('./model')
+const Chat = model.getModel('chat')
 const User = model.getModel('user')
 const _filter = {'pwd': 0, "__v": 0}
-const Chat = model.getModel('chat')
 
 //md5
 function md5Pwd(pwd) {
