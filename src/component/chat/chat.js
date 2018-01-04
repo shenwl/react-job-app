@@ -18,11 +18,10 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
-        // socket.on('receiveMsg', data => {
-        //     this.setState({
-        //         msg: [this.state.msg, data.text]
-        //     })
-        // })
+        if(!this.props.chat.chatMsg.length) {
+            this.props.getMsgList()
+            this.props.receiveMsg()
+        }
     }
 
     submitHandler() {
