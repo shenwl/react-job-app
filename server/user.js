@@ -22,10 +22,17 @@ Router.get('/list', (req, res) => {
 
 Router.get('/getmsglist', (req, res) => {
     const user = req.cookies.user
-    // 多个查询条件用'$or'
-    // '$or': [{from: user}, {to: user}]
-    Chat.find({}, (err, doc) => {
-        return res.json({code: 0, msgs: doc})
+
+    User.find({}, (err, doc) => {
+        let users = {}
+        doc.forEach(v => {
+            users[v._id] = {name: v.user, avatar: v.avatar}
+        })
+        Chat.find({'$or':[{from: user},{to: user}]}, (err, doc) => {
+            if(!err) {
+                return res.json({ code: 0, msgs: doc, users: users })
+            }
+        })
     })
 })
 
