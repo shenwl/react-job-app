@@ -21,14 +21,14 @@ Router.get('/list', (req, res) => {
 })
 
 Router.get('/getmsglist', (req, res) => {
-    const user = req.cookies.user
+    const user = req.cookies.userid
 
-    User.find({}, (err, doc) => {
+    User.find({}, (err, userdoc) => {
         let users = {}
-        doc.forEach(v => {
+        userdoc.forEach(v => {
             users[v._id] = {name: v.user, avatar: v.avatar}
         })
-        Chat.find({'$or':[{from: user},{to: user}]}, (err, doc) => {
+        Chat.find({'$or':[{from: user}, {to: user}]}, (err, doc) => {
             if(!err) {
                 return res.json({ code: 0, msgs: doc, users: users })
             }

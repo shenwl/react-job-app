@@ -8,7 +8,7 @@ const socket = io('ws://localhost:8081')
 
 @connect(
     state => state,
-    { getMsgList, sendMsg, receiveMsg}
+    {getMsgList, sendMsg, receiveMsg}
 )
 class Chat extends React.Component {
     constructor(props) {
