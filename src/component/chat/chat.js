@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, InputItem, NavBar } from 'antd-mobile'
+import { List, InputItem, NavBar, Icon } from 'antd-mobile'
 import { connect } from 'react-redux'
 import io from 'socket.io-client'
 import { getMsgList, sendMsg, receiveMsg } from '../../redux/chat.redux'
@@ -34,16 +34,25 @@ class Chat extends React.Component {
     }
 
     render() {
-        const user = this.props.match.params.user
+        const userid = this.props.match.params.user
         const Item = List.Item
+        const users = this.props.chat.users
+        if(!users[userid]) {
+            return null
+        }
         return (
             <div id='chat-page'>
-                <NavBar mode='dark'>
-                    {this.props.match.params.user}
+                <NavBar
+                    mode='dark'
+                    icon={<Icon type="left" />}
+                    onLeftClick={() => {
+                        this.props.history.goBack()
+                    }}>
+                    {users[userid].name}
                 </NavBar>
 
                 {this.props.chat.chatMsg.map(v => {
-                    return v.from === user? (
+                    return v.from === userid? (
                         <List key={v._id}>
                             <Item
                                 // thumb={}
