@@ -22,8 +22,11 @@ class Dashboard extends React.Component {
 		this.state = { text: '', msg: [] }
 	}
 	componentDidMount() {
-		this.props.getMsgList()
-		this.props.receiveMsg()
+		if(!this.props.chat.chatMsg.length) {
+			this.props.getMsgList()
+			this.props.receiveMsg()
+		}
+
 	}
 	render() {
 		const {pathname} = this.props.location
