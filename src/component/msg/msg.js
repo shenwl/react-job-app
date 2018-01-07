@@ -26,13 +26,16 @@ class Msg extends React.Component {
                     {chatList.map(v => {
                         const lastItem = this.getLastItem(v)
                         const targetId = (lastItem.from === userid)? lastItem.to : lastItem.from
+                        
+                        const name = this.props.chat.users[targetId].name
+                        const avatar = this.props.chat.users[targetId].avatar
                         return (
                             <Item
-                                
+                                thumb={require(`../img/${avatar}.png`)}
                                 key={lastItem._id}
                             >
                                 {lastItem.content}
-                                <Brief>{this.props.chat.users[targetId].name}</Brief>
+                                <Brief>{name}</Brief>
                             </Item>
                         )
                     })}
