@@ -58,22 +58,24 @@ class Chat extends React.Component {
                     {users[userid].name}
                 </NavBar>
 
-                {chatMsg.map(v => {
-                    const avatar = require(`../img/${users[v.from].avatar}.png`)
-                    return v.from === userid? (
-                        <List key={v._id}>
-                            <Item
-                                thumb={avatar}
-                            >{v.content}</Item>
-                        </List>
-                    ):(
-                        <List key={v._id}>
-                            <Item
-                                extra={<img src={avatar} />}
-                                className='chat-me'>{v.content}</Item>
-                        </List>
-                    )
-                })}
+                <List>
+                    {chatMsg.map(v => {
+                        const avatar = require(`../img/${users[v.from].avatar}.png`)
+                        return v.from === userid? (
+                            <List key={v._id}>
+                                <Item
+                                    thumb={avatar}
+                                >{v.content}</Item>
+                            </List>
+                        ):(
+                            <List key={v._id}>
+                                <Item
+                                    extra={<img src={avatar} />}
+                                    className='chat-me'>{v.content}</Item>
+                            </List>
+                        )
+                    })}
+                </List>
 
                 <div className="stick-footer">
                     <List>
