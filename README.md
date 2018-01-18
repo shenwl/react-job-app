@@ -5,7 +5,6 @@
 
 ![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/1.png)
 ![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/2.png)
-![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/3.png)
 ![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/4.png)
 
 [预览失败可打开此链接链接](https://github.com/shenwl/demos/blob/master/react-boss-img)
