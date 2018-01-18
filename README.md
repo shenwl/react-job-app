@@ -3,7 +3,12 @@
 
 # 效果
 
+![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/1.png)
+![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/2.png)
+![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/3.png)
+![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/4.png)
 
+[预览失败可打开此链接链接](https://github.com/shenwl/demos/blob/master/react-boss-img)
 # 功能
 
   - boss发布招聘信息，并且可以看到所有求职信息
