@@ -3,9 +3,9 @@
 
 # 效果
 
-![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/1.png)
-![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/2.png)
-![image](https://raw.githubusercontent.com/shenwl/demos/master/react-boss-img/4.png)
+![image](http://pn5wk1oxy.bkt.clouddn.com/1.png)
+![image](http://pn5wk1oxy.bkt.clouddn.com/2.png)
+![image](http://pn5wk1oxy.bkt.clouddn.com/4.png)
 
 # 功能
 
